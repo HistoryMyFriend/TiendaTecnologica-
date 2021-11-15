@@ -34,11 +34,13 @@ primary key (id)
 );
 
 create table facturas(
+id int auto_increment,
 letra enum('A','B','C'),
 fecha date,
 monto double,
 primary key (id),
-id int auto_increment
+idArticulo int,
+idCliente int
 );
 
 create table ventas(
@@ -66,6 +68,16 @@ alter table ventas
 add constraint FK_ventas_idEmpleado
 foreign key(id)
 references empleados(id);
+
+alter table facturas
+add constraint FK_articulos_idArticulo
+foreign key(id)
+references articulos(id);
+
+alter table clientes
+add constraint FK_facturas_idFactura
+foreign key(id)
+references facturas(id);
 
 
 describe facturas;
