@@ -38,34 +38,32 @@ letra enum('A','B','C'),
 fecha date,
 monto double,
 primary key (id),
-idArticulo int,
-idCliente int
+idC int not null references clientes,
+idE int not null references empleados,
+idA int not null references articulos
 );
 
 alter table facturas
-add constraint FK_facturas_idCliente
-foreign key(id)
+add constraint FK_facturas_idC_cliente
+foreign key(idC)
 references clientes(id);
 
 alter table facturas
-add constraint FK_articulos_idArticulo
-foreign key(id)
+add constraint FK_facturas_idA_Articulo
+foreign key(idA)
 references articulos(id);
 
-alter table clientes
-add constraint FK_facturas_idFactura
-foreign key(id)
-references facturas(id);
-
 alter table facturas
-add constraint FK_empleados_idEmpleado
-foreign key(id)
+add constraint FK_facturas_idE_Empleado
+foreign key(idE)
 references empleados(id);
 
+alter table clientes
+add constraint FK_clientes_idArticulo
+foreign key(id)
+references articulos(id);
 
 describe facturas;
 describe articulos;
 describe clientes;
 describe empleados;
-
-
