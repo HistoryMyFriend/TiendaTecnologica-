@@ -58,10 +58,6 @@ add constraint FK_facturas_idE_Empleado
 foreign key(idE)
 references empleados(id);
 
-alter table clientes
-add constraint FK_clientes_idArticulo
-foreign key(id)
-references articulos(id);
 
 describe facturas;
 describe articulos;
